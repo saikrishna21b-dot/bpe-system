@@ -1,0 +1,23 @@
+plugins {
+    id 'java-library'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+dependencies {
+    // Required for OncePerRequestFilter, HttpServletRequest, ServletException
+    api 'org.springframework:spring-web:6.1.14'
+
+    // Add servlet API explicitly (this fixes your STS red errors)
+    api 'jakarta.servlet:jakarta.servlet-api:6.0.0'
+
+    // Logging
+    api 'org.slf4j:slf4j-api:2.0.16'
+    implementation 'ch.qos.logback:logback-classic:1.5.6'
+
+    // Validation
+    implementation 'org.springframework.boot:spring-boot-starter-validation:3.4.12'
+}

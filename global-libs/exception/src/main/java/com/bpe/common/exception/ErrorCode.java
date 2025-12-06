@@ -1,0 +1,11 @@
+ package com.bpe.common.exception;
+
+ public enum ErrorCode {
+ 	USER_NOT_FOUND, INVALID_INPUT, VALIDATION_ERROR, UNAUTHORIZED, FORBIDDEN, INTERNAL_ERROR,
+
+ 	SERVICE_UNAVAILABLE;
+
+ }
+
+
+

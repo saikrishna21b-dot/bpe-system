@@ -1,0 +1,32 @@
+rootProject.name = 'bpe-system'
+
+// Global libs
+include 'global-libs:exception'
+
+// Security libs
+include 'security-libs:auth-annotations'
+include 'security-libs:jwt-core'
+include 'security-libs:security-common'
+
+// Infrastructure services
+include 'infrastructure:config-service'
+include 'infrastructure:discovery-service'
+include 'infrastructure:gateway-service'
+
+// Core business services
+include 'services:analytics-service'
+include 'services:audit-service'
+include 'services:commerce-service'
+include 'services:customer-service'
+include 'services:document-service'
+include 'services:file-storage-service'
+include 'services:iam-service'
+include 'services:identity-service'
+include 'services:jobs-service'
+include 'services:merchant-service'
+include 'services:notification-service'
+include 'services:organization-service'
+include 'services:payment-command-service'
+include 'services:payment-query-service'
+include 'services:product-service'
+include 'services:staff-service'
