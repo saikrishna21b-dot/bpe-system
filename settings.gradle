@@ -1,20 +1,31 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+    plugins {
+        id 'org.springframework.boot' version '3.3.5'
+        id 'io.spring.dependency-management' version '1.1.4'
+    }
+}
+
 rootProject.name = 'bpe-system'
 
 include(
-    // global libs
-    'global-libs:exception',
-
-    // security libs
-    'security-libs:jwt-core',
-    'security-libs:auth-annotations',
-    'security-libs:security-common',
-
     // infrastructure
     'infrastructure:config-service',
     'infrastructure:discovery-service',
     'infrastructure:gateway-service',
 
-    // core services
+    // shared libraries
+    'global-libs:exception',
+
+    // security libraries
+    'security-libs:jwt-core',
+    'security-libs:security-common',
+    'security-libs:auth-annotations',
+
+    // business services
     'services:iam-service',
     'services:user-service',
     'services:commerce-service',
@@ -22,7 +33,7 @@ include(
     'services:notification-service',
     'services:jobs-service',
 
-    // payments
+    // payments (CQRS)
     'services:payment-command-service',
     'services:payment-query-service',
 

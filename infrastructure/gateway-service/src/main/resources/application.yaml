@@ -1,0 +1,40 @@
+server:
+  port: 9090   # Gateway port
+
+spring:
+  application:
+    name: gateway-service
+
+  # ✅ Modern Spring Boot 3.x way (NO bootstrap.yml)
+  config:
+    import: optional:configserver:http://localhost:8888
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true                # Enable Eureka-based routing
+          lower-case-service-id: true  # serviceId -> lowercase URLs
+
+      # Optional global filters
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials
+
+# ✅ Eureka client (Gateway SHOULD register)
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+# ✅ Actuator (important for Gateway & monitoring)
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+  endpoint:
+    health:
+      show-details: always

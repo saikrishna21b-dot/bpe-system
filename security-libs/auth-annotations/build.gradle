@@ -1,2 +1,18 @@
-plugins { id "java" }
-repositories { mavenCentral() }
+plugins {
+    id 'java-library'
+}
+
+dependencies {
+
+    // Depends on security-common (AuthenticatedUser, SecurityContext)
+    api project(':security-libs:security-common')
+
+    // Spring AOP (for @Aspect, @Before)
+    api 'org.springframework:spring-aop:6.1.3'
+
+    // AspectJ runtime (required for Spring AOP)
+    api 'org.aspectj:aspectjweaver:1.9.21'
+
+    // Logging API (optional but recommended)
+    api 'org.slf4j:slf4j-api:2.0.9'
+}

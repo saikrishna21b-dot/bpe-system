@@ -2,31 +2,25 @@ plugins {
     id 'java-library'
 }
 
-group = 'com.bpe'
-version = '0.0.1-SNAPSHOT'
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
-    }
-}
-
-repositories {
-    mavenCentral()
-}
-
 dependencies {
-    // Spring Web
-    api 'org.springframework:spring-web:6.1.14'
 
-    // Servlet API
-    api 'jakarta.servlet:jakarta.servlet-api:6.0.0'
+    // ✅ Spring Boot BOM (keeps all versions aligned)
+    api platform('org.springframework.boot:spring-boot-dependencies:3.3.5')
 
-    // Validation
-    api 'jakarta.validation:jakarta.validation-api:3.0.2'
-    api 'org.hibernate.validator:hibernate-validator:8.0.1.Final'
+    // ✅ Core Spring
+    api 'org.springframework:spring-context'
 
-    // Logging
-    api 'org.slf4j:slf4j-api:2.0.16'
-    implementation 'ch.qos.logback:logback-classic:1.5.6'
+    // ✅ Web + MVC (RestControllerAdvice, ExceptionHandler, Filters)
+    api 'org.springframework:spring-web'
+    api 'org.springframework:spring-webmvc'
+
+    // ✅ Servlet API (HttpServletRequest, Filter, FilterChain, etc.)
+    api 'jakarta.servlet:jakarta.servlet-api'
+
+    // ✅ Validation (for @Valid, @NotNull, etc.)
+    api 'jakarta.validation:jakarta.validation-api'
+    api 'org.hibernate.validator:hibernate-validator'
+
+    // ✅ Logging
+    api 'org.slf4j:slf4j-api'
 }

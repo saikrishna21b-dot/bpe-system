@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '3.3.5'   // ✅ LOCKED TO SUPPORTED VERSION
+    id 'org.springframework.boot' version '3.3.5'
     id 'io.spring.dependency-management'
     id 'java'
 }
@@ -18,36 +18,30 @@ repositories {
 }
 
 ext {
-    set('springCloudVersion', "2023.0.3")   // ✅ MATCHES BOOT 3.3.x
+    set('springCloudVersion', "2023.0.3")
 }
 
 dependencies {
 
-    implementation 'org.springframework.boot:spring-boot-starter'
-
-    // ✅ SPRING CLOUD GATEWAY
+    // ✅ SPRING CLOUD GATEWAY (Reactive)
     implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
 
-    // ✅ SECURITY
-    implementation 'org.springframework.boot:spring-boot-starter-security'
+    // ✅ JWT CORE (AUTHENTICATION)
+    implementation project(':security-libs:jwt-core')
 
-    // ✅ ACTUATOR
+    // ✅ SHARED SECURITY CONTRACTS
+    implementation project(':security-libs:security-common')
+
+    // ✅ ACTUATOR (optional)
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    
-    implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
+    // ✅ CONFIG CLIENT (optional)
     implementation 'org.springframework.cloud:spring-cloud-starter-config'
+    implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     
-
-
-    //implementation project(':security-libs:security-common')
-   // implementation project(':security-libs:jwt-core')
-//    implementation project(':security-libs:auth-annotations')
-
-//    implementation project(':global-libs:global-libs-exception')
-
-
 }
 
 dependencyManagement {

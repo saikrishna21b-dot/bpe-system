@@ -1,17 +1,12 @@
-// package com.bpe.common.exception;
+package com.bpe.common.exception;
 
+public class BadRequestException extends AppException {
 
-// import com.finpay.userservice.util.ErrorCode;
+	private static final long serialVersionUID = 1L;
 
-// public class BadRequestException extends AppException {
+	protected BadRequestException(String msge, ErrorCode errorCode) {
+		super(errorCode, msge);
 
-// 	private static final long serialVersionUID = 1L;
+	}
 
-// 	protected BadRequestException(String msge, ErrorCode errorCode) {
-// 		super(errorCode, msge);
-// 		// TODO Auto-generated constructor stub
-// 	}
-
-// }
-
-
+}
