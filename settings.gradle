@@ -1,29 +1,31 @@
 rootProject.name = 'bpe-system'
 
 include(
-        // infrastructure
-        'infrastructure:config-service',
-        'infrastructure:discovery-service',
-        'infrastructure:gateway-service',
+    // global libs
+    'global-libs:exception',
 
-        // global libs
-        'global-libs:exception',
+    // security libs
+    'security-libs:jwt-core',
+    'security-libs:auth-annotations',
+    'security-libs:security-common',
 
-        // security libs
-        'security-libs',
+    // infrastructure
+    'infrastructure:config-service',
+    'infrastructure:discovery-service',
+    'infrastructure:gateway-service',
 
-        // core domain services
-        'services:iam-service',
-        'services:user-service',
-        'services:commerce-service',
-        'services:file-service',
-        'services:notification-service',
-        'services:jobs-service',
+    // core services
+    'services:iam-service',
+    'services:user-service',
+    'services:commerce-service',
+    'services:file-service',
+    'services:notification-service',
+    'services:jobs-service',
 
-        // payments (CQRS)
-        'services:payment-command-service',
-        'services:payment-query-service',
+    // payments
+    'services:payment-command-service',
+    'services:payment-query-service',
 
-        // management
-        'services:management-service'
+    // management
+    'services:management-service'
 )

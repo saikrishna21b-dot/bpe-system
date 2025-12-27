@@ -5,10 +5,22 @@ spring:
   application:
     name: config-service
 
+  profiles:
+    active: native 
+
   cloud:
     config:
       server:
-        git:
-          uri: file:///S:/work_space/bpe-config-repo
-          clone-on-start: true
-          default-label: main
+        native:
+          search-locations: file:/S:/work_space/bpe-config-repo
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
